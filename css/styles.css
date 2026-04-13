@@ -42,7 +42,7 @@ body {
 
 .brand-logo {
   height: auto;
-  width: auto;
+  width: 100px;
 }
 
 .navbar-brand span {
@@ -863,7 +863,6 @@ body {
 }
 
 .project-thumb {
-  height: 250px;
   background-size: cover;
   background-position: center;
 }
