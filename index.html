@@ -209,7 +209,7 @@
               </div>
               <form id="contactForm" method="POST">
                 <div class="row g-3">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <label class="form-label">Full name *</label>
                     <input type="text" class="form-control" name="fullName" placeholder="Enter your name" required />
                   </div>
@@ -217,6 +217,11 @@
                     <label class="form-label">Phone *</label>
                     <input type="tel" class="form-control" name="phone" placeholder="+91" minlength="10" maxlength="10" required />
                   </div>
+
+                 <div class="col-md-6">
+                  <label class="form-label">Email ID</label>
+                  <input  type="email" class="form-control" name="email" placeholder="Enter your email id" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email"/>
+                </div>
                   <div class="col-md-6">
                     <label class="form-label">City *</label>
                     <input type="text" class="form-control" name="city" placeholder="Enter your city" required />
