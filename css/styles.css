@@ -59,7 +59,7 @@ body {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .navbar .nav-link:hover,
@@ -669,7 +669,7 @@ body {
 }
 
 .img-one {
-  height: 320px;
+  height: 400px;
   background-image: linear-gradient(120deg, rgba(12, 20, 36, 0.2), rgba(12, 20, 36, 0)),
     url("../img/solar-panel.jpg");
 }
