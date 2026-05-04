@@ -975,30 +975,48 @@
     crossorigin="anonymous"></script>
   <script>
     // EmailJS Configuration
-    emailjs.init("90lw5Xv9hzKCp3syq"); // Get this from EmailJS dashboard
+    emailjs.init("90lw5Xv9hzKCp3syq");
 
-    // Handle contact form submission
-    document.getElementById('contactForm')?.addEventListener('submit', function (e) {
-      e.preventDefault();
-      
-      const submitBtn = this.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
+    // Wait for DOM to be fully loaded
+    function initializeForm() {
+      const contactForm = document.getElementById('contactForm');
+      if (!contactForm) {
+        console.error('Contact form not found');
+        return;
+      }
 
-      emailjs.sendForm('service_1wfgzaf', 'template_yrttu8q', this)
-        .then(function (response) {
-          alert('Quote request sent successfully! We will contact you within 24 hours.');
-          document.getElementById('contactForm').reset();
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
-        }, function (error) {
-          alert('Failed to send request. Please try again or call us at +91 98402 22505');
-          console.error('EmailJS Error:', error);
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
-        });
-    });
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        console.log('Form submitted');
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        emailjs.sendForm('service_1wfgzaf', 'template_yrttu8q', this)
+          .then(function (response) {
+            console.log('Email sent successfully:', response);
+            alert('✓ Quote request sent successfully!\n\nWe will contact you within 24 hours.');
+            contactForm.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          })
+          .catch(function (error) {
+            console.error('EmailJS Error:', error);
+            alert('✗ Failed to send request.\n\nPlease try again or call us at +91 98402 22505');
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          });
+      });
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeForm);
+    } else {
+      initializeForm();
+    }
   </script>
   <script>
     const observer = new IntersectionObserver(
